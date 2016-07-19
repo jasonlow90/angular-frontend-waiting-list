@@ -10,13 +10,6 @@
 
         <a href="home.html"><img src="images/querer_logo.png" width="240" height="154" alt="" /></a>
 
-        <div class="loginForm" ng-hide="admin.checkToken()">
-            <form class="column" ng-submit = "admin.authorize()" >
-                <input type="text" name="user_email" ng-model="admin.staff.restaurantEmail">
-                <input type="password" name="user_pwd" ng-model="admin.staff.password">
-                <button id="btn-signin" class="btn-login" >Log In</button>
-            </form>
-        </div>
     </header>
 
     <div id="wrapper">
@@ -25,10 +18,10 @@
 
             <div class="top flex">
                 <form class="customerForm flex" method="get" ng-submit="admin.addCustomer()">
-                    <input id="customer_heads" type="text" name="customer_heads" ng-model="admin.staff.heads" placeholder="Heads">
-                    <input id="customer_name" type="text" name="customer_name" ng-model="admin.staff.customerName" placeholder="Name">
-                    <input id="customer_mobile" type="text" name="customer_mobile" ng-model="admin.staff.phone" placeholder="Mobile">
-                    <input id="customer_eta" type="text" name="customer_eta" vng-model="admin.staff.eta" placeholder="ETA">
+                    <input id="customer_heads" type="text" name="customer_heads" ng-model="admin.customer.heads" placeholder="Heads">
+                    <input id="customer_name" type="text" name="customer_name" ng-model="admin.customer.customerName" placeholder="Name">
+                    <input id="customer_mobile" type="text" name="customer_mobile" ng-model="admin.customer.phone" placeholder="Mobile">
+                    <input id="customer_eta" type="text" name="customer_eta" ng-model="admin.customer.eta" placeholder="ETA">
                     <button id="newCustomer" class="btn-submit">Add Customer</button>
                 </form>
             </div>
@@ -56,9 +49,9 @@
                     </thead>
                     <tbody id="customerListAdmin" >
                       <tr ng-repeat="customer in admin.all">
+                        <td>{{customer.heads}}</td>
                         <td>{{customer.customerName}}</td>
                         <td>{{customer.phone}}</td>
-                        <td>{{customer.heads}}</td>
                         <td ng-model="customer.finishedWaiting">{{ ((customer.finishedWaiting - admin.timeNow)/60000).toFixed(2) }}  </td>
 
 
