@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app= "Queuer" >
 
 <head>
     <link rel="stylesheet" href="css/style.css">
@@ -15,10 +15,17 @@
     <!-- angular depedencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
+    	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controller/customerAdminController.js"></script>
+    <script src="js/controller/restaurantController.js"></script>
+
     <script src="js/controller/customerPublicController.js"></script>
+    <script src="js/controller/rootController.js"></script>
+
     <script src="js/models/customerPublic.js"></script>
+    <script src="js/models/restaurant.js"></script>
+
 
 
     <script src="js/models/customerAdmin.js"></script>
@@ -26,30 +33,17 @@
     <script src="js/services/tokenService.js"></script>
 </head>
 
-<body ng-app= "Queuer" ng-controller="CustomerAdminController as admin">
-    <header>
-        <a href="home.html"><img src="images/querer_logo.png" width="240" height="154" alt="" /></a>
-        <div class="loginForm">
-            <form class="column" ng-submit = "admin.authorize()">
-                <input type="email" name="user_email" required ng-model="admin.admin.restaurantEmail">
-                <input type="password" name="user_pwd" required ng-model="admin.admin.password">
-                <button id="btn-signin" class="btn-login">Log In</button>
-            </form>
-        </div>
-        <button class="btn-register">Register</button>
-    </header>
+<body>
 
-    <div id="wrapper">
-        <div id="restaurant-list" class="container">
-        </div>
-        <!-- end #restaurant-list -->
-        <!-- end container -->
-    </div>
-    <!-- end wrapper -->
+  <div ui-view>
+    
+  </div>
     <footer>
-    <img src="images/foot_line.png" width="226" height="30" alt=""/>
-  </footer>
+      <img src="images/foot_line.png" width="226" height="30" alt=""/>
+    </footer>
 
+
+  </div>
 
 </body>
 
