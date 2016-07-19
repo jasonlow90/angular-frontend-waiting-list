@@ -1,5 +1,5 @@
 angular
-  .module('Queuer', ['ngResource', 'ui.router'])
+  .module('Queuer', ['ngResource', 'ui.router', 'ngRoute'])
   .constant('API', 'http://localhost:3000')
   .config(function($httpProvider){
   $httpProvider.interceptors.push('AuthInterceptor');
@@ -12,7 +12,7 @@ function MainRouter($stateProvider, $urlRouterProvider, API){
 		.state('root', {
 			url: "",
       template: '<section ui-view></section ui-view>',
-      controller: "RootController"
+      controller: "RestaurantController"
     })
 		.state('admin', {
 			url: ":restaurantNameSuburb/admin",
@@ -28,7 +28,7 @@ function MainRouter($stateProvider, $urlRouterProvider, API){
       controller: "RestaurantController"
     });
 
-	// $urlRouterProvider.otherwise("/");
+	$urlRouterProvider.otherwise("");
 }
 
 // 'https://waiting-list-jnp.herokuapp.com' || 'http://localhost:3000'
