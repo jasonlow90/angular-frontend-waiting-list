@@ -2,8 +2,8 @@ angular
   .module('Queuer')
   .factory('Restaurant', Restaurant);
 
-Restaurant.$inject = ['$resource', 'API'];
-function Restaurant($resource, API) {
+Restaurant.$inject = ['$resource', 'API', '$route'];
+function Restaurant($resource, API, $route) {
 
   return $resource(
     API, {},
@@ -29,7 +29,6 @@ function Restaurant($resource, API) {
             restaurant.customers = item.customers;
 
             list.push(restaurant);
-            console.log("yes");
           });
 
 
@@ -48,9 +47,7 @@ function Restaurant($resource, API) {
           var restaurant = {};
             restaurant.restaurantNameSuburb = jsonData.restaurant.restaurantNameSuburb;
             restaurant.token = jsonData.token;
-            console.log("yes");
-            console.log(jsonData.restaurant);
-
+            console.log(restaurant);
 
           return restaurant;
         }

@@ -2,12 +2,12 @@ angular
   .module('Queuer')
   .factory('CustomerAdmin', CustomerAdmin);
 
-CustomerAdmin.$inject = ['$resource', 'API'];
-function CustomerAdmin($resource, API) {
+CustomerAdmin.$inject = ['$resource', 'API', '$route'];
+function CustomerAdmin($resource, API, $route) {
 
   return $resource(
     API + '/:restaurantNameSuburb/admin/:phone',
-    {restaurantNameSuburb: '@_r', phone: '@phone'},
+    {restaurantNameSuburb: "@restaurantNameSuburb", phone: '@phone'},
     { 'get':       { method: 'GET' },
       'save':      { method: 'POST' },
       'query':     { method: 'GET', isArray: true,
