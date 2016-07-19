@@ -27,21 +27,22 @@ function RootController(Restaurant , $window, $state, TokenService){
   }
 
 
-  // this.authorize = function(){
-  //   console.log("checking authorization");
-  //   var user = Restaurant.authorize(self.staff, handleLogin);
-  //   // console.log(user);
-  //   $state.go("root");
-  //   // if (self.isLoggedIn() ? $state.go("admin") : $state.go("home"));
-  //
-  //   // $window.location.href = "restaurantView.html?r_"+user.restaurantNameSuburb;
-  // };
+  this.authorize = function(){
+    console.log("checking authorization");
+    var user = Restaurant.authorize(self.staff, handleLogin);
+    // console.log(user);
+    $state.go("root");
+    // if (self.isLoggedIn() ? $state.go("admin") : $state.go("home"));
+
+    // $window.location.href = "restaurantView.html?r_"+user.restaurantNameSuburb;
+  };
 
   this.isLoggedIn=function(){
     return !!TokenService.getToken();
     // return false
   };
-if ($state.is("root")) $state.go(self.isLoggedIn() ? "admin" : "home");  
+// if ($state.is("root")) $state.go(self.isLoggedIn() ? "admin" : "home");
+$state.go("home")
   // self.isLoggedIn();
 
   return this;
