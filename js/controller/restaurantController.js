@@ -9,9 +9,9 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
   // $scope.awesome = true; //note: $scope is not really a scope. its should be something like $context;
   // $scope.title = 'Home Page!';
   var self = this;
-  self.all = [];
+  self.all = []; // Models for all restaurants
   self.staff = {};
-  self.waitingArray = [];
+  self.restaurant ={}; // Model for creating a restaurant
   self.eta ;
 
   function handleLogin(res) {
@@ -32,18 +32,24 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
   }
 
   this.getRestaurants = function(){
-    self.all = Restaurant.query();
-    for(var i = 0; i > self.all.customers; i++){
-      self.waitingArray.push(self.all.customers[i]);
-    }
-    self.eta = Math.max.apply(Math, self.waitingArray).toFixed(1);
-    if (self.eta < 1 && self.waitingArraylength !== 0) {
-          self.eta = "Due";
-        } else if (self.waitingArraylength === 0) {
-          self.eta = "--";
+    Restaurant.query(function(res){
+      self.all = res;
+      for (var i = 0; i < self.all.length; i++) {
+        var waitingArray = [];
+        for(var y =0; y < self.all[i].customers.length; y++){
+          waitingArray.push(new Date(self.all[i].customers[y].finishedWaiting));
         }
-  };
+        self.all[i].eta = Math.max.apply(Math, waitingArray).toFixed(1);
+        if (self.all[i].eta < 1 && waitingArray.length !== 0) {
+          self.all[i].eta = "Due";
+        } else if (waitingArray.length === 0) {
+          self.all[i].eta = "--";
+        }
+      }
 
+      console.log(self.all)
+    });
+  };
   this.authorize = function(){
     console.log("checking authorization");
     var user = Restaurant.authorize(self.staff, handleLogin);
@@ -51,9 +57,35 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
 
   this.isLoggedIn=function(){
     return !!TokenService.getToken();
-    // return false
   };
-  // self.isLoggedIn();
+
+  this.register = function(){
+    $state.go("registration");
+  };
+
+  this.addRestaurant = function(){
+    console.log(self.restaurant);
+    Restaurant.save(self.restaurant, function(){
+      $state.go("root");
+    });
+  };
+
+  this.timeNow = Date.now();
+  var timer = function(){
+    self.timeNow = Date.now(); // Refreshes the time Now every second
+    // console.log('renewing date.now');
+    $scope.$digest();
+  };
+
+  this.logoClick = function(){
+    $state.go("home");
+  };
+
+
+
+  window.setInterval(timer, 1000); // Runs the timer() function every second
+  //
+
   if ($state.is("root")) $state.go(self.isLoggedIn() ? "admin" : "home");
 
   this.getRestaurants();

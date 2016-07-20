@@ -6,7 +6,7 @@ CustomerPublic.$inject = ['$resource', 'API'];
 function CustomerPublic($resource, API) {
 
   return $resource(
-    API+'/nialls-restaurant-melbourne/public', {},
+    API+'/:restaurantNameSuburb/public', {restaurantNameSuburb: '@restaurantNameSuburb'},
 
     { 'get':       { method: 'GET' },
       'save':      { method: 'POST' },

@@ -1,14 +1,11 @@
 
 <div ng-controller="CustomerAdminController as admin">
     <header>
-      <div class="btn-register" id="logout">
-        <form class="column" ng-submit="admin.removeToken()">
-          <button class="btn-register" id="logout" >Logout</button>
-        </form>
+          <img src="images/querer_logo.png" width="240" height="154" alt="" ng-click="admin.logoClick()"/>
+      <div class= "logout" id="logout">
+          <button class="btn-register" id="logout" ng-click="admin.removeToken()" >Logout</button>
 
       </div>
-
-        <a href="home.html"><img src="images/querer_logo.png" width="240" height="154" alt="" /></a>
 
     </header>
 
@@ -47,19 +44,17 @@
                             </td>
                         </tr>
                     </thead>
-                    <tbody id="customerListAdmin" >
-                      <tr ng-repeat="customer in admin.all">
-                        <td>{{customer.heads}}</td>
-                        <td>{{customer.customerName}}</td>
-                        <td>{{customer.phone}}</td>
-                        <td >{{ ((customer.finishedWaiting - admin.timeNow)/60000).toFixed(2) }}  </td>
-                        <td><button ng-click ="admin.editCustomer(customer)" class="btn-remove">Edit Me</button></td>
-                        <td><button ng-click="admin.deleteCustomer(customer)" class="btn-remove">Delete Me</button></td>
+                    <tbody id="customerListAdmin" ng-repeat="customer in admin.all">
 
+                        <tr>
+                          <td>{{customer.heads}}</td>
+                          <td>{{customer.customerName}}</td>
+                          <td>{{customer.phone}}</td>
+                          <td >{{ ((customer.finishedWaiting - admin.timeNow)/60000).toFixed(1) }}  </td>
+                          <td><button ng-click ="admin.editCustomer(customer)" class="btn-remove">Edit Me</button></td>
+                          <td><button ng-click="admin.deleteCustomer(customer)" class="btn-remove">Delete Me</button></td>
 
-
-
-                      </tr>
+                        </tr>
                         <!-- dynamic content -->
                     </tbody>
 

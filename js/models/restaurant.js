@@ -9,7 +9,7 @@ function Restaurant($resource, API, $route) {
     API, {},
 
     { 'get':       { method: 'GET' },
-      'save':      { method: 'POST' },
+      'save':      { method: 'POST', url: API + '/restaurant/add' },
       'query':     { method: 'GET', isArray: true,
         transformResponse: function(data, header){
           // Getting string data in response

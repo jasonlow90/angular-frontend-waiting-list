@@ -1,0 +1,41 @@
+
+
+    <header ng-controller="RestaurantController as admin">
+        <a ng-click="admin.logoClick()"><img src="images/querer_logo.png" width="240" height="154" alt="" /></a>
+    </header>
+
+    <div id="wrapper">
+
+        <div class="publicPage-container">
+
+            <div class="bottom">
+                <!-- customer -->
+
+                <table class="customerTable" id="customerTable">
+                    <thead>
+                        <tr>
+                            <td><i class="fa fa-user fa-2x" aria-hidden="true"></i></td>
+                            <td>NAME</td>
+                            <td>HEADS</td>
+                            <td><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i></td>
+                        </tr>
+                    </thead>
+                    <tbody id="customerListAdmin" ng-controller="CustomerPublicController as customers">
+                      <tr ng-repeat="customer in customers.all">
+                        <td>{{customer.customerName}}</td>
+                        <td>{{customer.phone}}</td>
+                        <td>{{customer.heads}}</td>
+                        <td>{{ ((customer.finishedWaiting - customers.timeNow)/60000).toFixed(2) }}  </td>
+
+
+
+
+                      </tr>
+                        <!-- dynamic content -->
+                    </tbody>
+
+                </table>
+                <!-- end customer -->
+            </div>
+        </div>
+    </div>

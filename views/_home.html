@@ -3,7 +3,10 @@
   <div id="wrapper" ng-controller = "RestaurantController as restaurants">
     <div class="home" >
       <header>
-        <a href="home.html"><img src="images/querer_logo.png" width="240" height="154" alt="" /></a>
+        <a ng-click="restaurants.logoClick()">
+          <img src="images/querer_logo.png" width="240" height="154" alt=""/>
+
+        </a>
         <div class="loginForm" >
           <form class="column" >
             <input type="email" name="user_email" required ng-model="restaurants.staff.restaurantEmail">
@@ -11,9 +14,11 @@
             <button id="btn-signin" class="btn-login" ng-click = "restaurants.authorize()">Log In</button>
           </form>
         </div>
-        <button class="btn-register">Register</button>
+        <button class="btn-register" ng-click="restaurants.register()">Register</button>
       </header>
-    <div id="restaurant-list" class="container" ng-repeat="restaurant in restaurants.all" >
+<div ng-repeat="restaurant in restaurants.all" >
+  <a ui-sref="public({restaurantNameSuburb: '{{ restaurant.restaurantNameSuburb }}' })">
+    <div id="restaurant-list" class="container">
       <div class="home-restaurant">
         <div class="details">
           <div class="more-top-bottom">{{ restaurant.restaurantName }}</div>
@@ -26,10 +31,12 @@
           <div class="queue">No. in Queue</div>
           <div class="queue-num">{{restaurant.customers.length}}</div>
           <div class="wait">Waiting Time: </div>
-          <div class="wait-num">{{restaurants.eta}}</div>
+          <div class="wait-num">{{((restaurant.eta - restaurants.timeNow)/60000).toFixed(2)}}</div>
         </div>
 
       </div>
 
     </div>
+</a>
+</div>
   </div>
