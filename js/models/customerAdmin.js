@@ -25,7 +25,7 @@ function CustomerAdmin($resource, API, $route) {
       customer.startedWaiting = new Date(item.startedWaiting);
       customer.finishedWaiting = new Date(item.finishedWaiting);
       customer._restaurant = item._restaurant;
-      customer._id = item._customer;
+      customer._id = item._id;
 
 
       list.push(customer);
@@ -37,7 +37,7 @@ function CustomerAdmin($resource, API, $route) {
   }
   },
       'remove':    { method: 'DELETE' },
-      'delete':    { method: 'DELETE' },
+      'update': {method: 'PUT'},
       'authorize': {
         url: API + '/signin',
         method: 'POST'

@@ -15,23 +15,41 @@ function CustomerAdminController(CustomerAdmin, $interval, TokenService, $window
   this.staff = {};
 
   // this.$routeParams = "hello";
-  console.log($window.decodeURIComponent());
-  console.log($route.restaurantNameSuburb)
 
   this.getCustomers = function(){
     self.all = CustomerAdmin.query({restaurantNameSuburb: $route.restaurantNameSuburb});
-    console.log("Queried success");
+    console.log(self.all);
   };
 
   this.addCustomer = function(){
     self.customer.restaurantNameSuburb = $route.restaurantNameSuburb;
     console.log(self.customer);
-    CustomerAdmin.save(self.customer, function(character){
-      console.log(character);
-      self.all.push(character);
-      self.customer = {};
-    });
+    if(self.customer._id){
+      CustomerAdmin.update(self.customer, function(character){
+        self.customer = {};
+      });
+
+    } else {
+
+      CustomerAdmin.save(self.customer, function(character){
+        self.all.push(character);
+        self.customer = {};
+      });
+    }
   };
+
+  this.editCustomer = function(customer){
+    self.customer = customer;
+    console.log(self.customer);
+  };
+
+  this.deleteCustomer = function(customer){
+    customer.restaurantNameSuburb = $route.restaurantNameSuburb;
+    console.log(customer);
+    CustomerAdmin.remove(customer);
+    var index = self.all.indexOf(customer);
+    self.all.splice(index, 1);
+  }
 
   this.checkToken = function(){
     console.log("checking token");
@@ -51,17 +69,19 @@ function CustomerAdminController(CustomerAdmin, $interval, TokenService, $window
     return !!TokenService.getToken();
   };
 
-  this.getCustomers()
-  // var timer = function(){
-  //   self.timeNow = Date.now(); // Refreshes the time Now every second
-  //   // console.log('renewing date.now');
-  //   $scope.$digest();
-  // };
+  this.timeNow = Date.now();
+  var timer = function(){
+    self.timeNow = Date.now(); // Refreshes the time Now every second
+    // console.log('renewing date.now');
+    $scope.$digest();
+  };
+
+
+  window.setInterval(timer, 1000); // Runs the timer() function every second
   //
-  // window.setInterval(timer, 1000); // Runs the timer() function every second
-  // //
-  // // this.start();
+  // this.start();
   // if(self.isLoggedIn()) self.getCustomers();
+  this.getCustomers();
 
   //
   return this;

@@ -52,7 +52,9 @@
                         <td>{{customer.heads}}</td>
                         <td>{{customer.customerName}}</td>
                         <td>{{customer.phone}}</td>
-                        <td ng-model="customer.finishedWaiting">{{ ((customer.finishedWaiting - admin.timeNow)/60000).toFixed(2) }}  </td>
+                        <td >{{ ((customer.finishedWaiting - admin.timeNow)/60000).toFixed(2) }}  </td>
+                        <td><button ng-click ="admin.editCustomer(customer)" class="btn-remove">Edit Me</button></td>
+                        <td><button ng-click="admin.deleteCustomer(customer)" class="btn-remove">Delete Me</button></td>
 
 
 
