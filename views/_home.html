@@ -1,42 +1,42 @@
+<header ng-controller="RestaurantController as restaurants" >
+    <a ng-click="restaurants.logoClick()">
+        <img src="images/querer_logo.png" width="240" height="154" alt="" />
 
-
-  <div id="wrapper" ng-controller = "RestaurantController as restaurants">
-    <div class="home" >
-      <header>
-        <a ng-click="restaurants.logoClick()">
-          <img src="images/querer_logo.png" width="240" height="154" alt=""/>
-
-        </a>
-        <div class="loginForm" >
-          <form class="column" >
+    </a>
+    <div class="loginForm">
+        <form class="column">
             <input type="email" name="user_email" required ng-model="restaurants.staff.restaurantEmail">
             <input type="password" name="user_pwd" required ng-model="restaurants.staff.password">
-            <button id="btn-signin" class="btn-login" ng-click = "restaurants.authorize()">Log In</button>
-          </form>
-        </div>
-        <button class="btn-register" ng-click="restaurants.register()">Register</button>
-      </header>
-<div ng-repeat="restaurant in restaurants.all" >
-  <a ui-sref="public({restaurantNameSuburb: '{{ restaurant.restaurantNameSuburb }}' })">
-    <div id="restaurant-list" class="container">
-      <div class="home-restaurant">
-        <div class="details">
-          <div class="more-top-bottom">{{ restaurant.restaurantName }}</div>
-          <div class="less-top-bottom">{{restaurant.website}}</div>
-          <div class="less-top-bottom">Contact: {{restaurant.phone}}</div>
-          <img src="./images/logo.png" alt="{{restaurant.restaurantName}}" style="margin-left: 55px">
-        </div>
-
-        <div class="home-stats">
-          <div class="queue">No. in Queue</div>
-          <div class="queue-num">{{restaurant.customers.length}}</div>
-          <div class="wait">Waiting Time: </div>
-          <div class="wait-num">{{((restaurant.eta - restaurants.timeNow)/60000).toFixed(2)}}</div>
-        </div>
-
-      </div>
-
+            <button id="btn-signin" class="btn-login" ng-click="restaurants.authorize()">Log In</button>
+        </form>
     </div>
-</a>
+    <button class="btn-register" ng-click="restaurants.register()">Register</button>
+</header>
+<div id="wrapper" ng-controller="RestaurantController as restaurants" >
+<div class="container">
+
+    <div ng-repeat="restaurant in restaurants.all" >
+        <a ui-sref="public({restaurantNameSuburb: '{{ restaurant.restaurantNameSuburb }}' })">
+            <div id="restaurant-list">
+                <div class="home-restaurant">
+                    <div class="details">
+                      <img class = "restaurant-logo" src="./images/logo.png" alt="{{restaurant.restaurantName}}">
+                        <h2 class="more-top-bottom">{{ restaurant.restaurantName }}</h2>
+                        <div class="less-top-bottom">{{restaurant.website}}</div>
+                        <div class="less-top-bottom">Contact: {{restaurant.phone}}</div>
+                    </div>
+
+                    <div class="home-stats">
+                        <div class="queue">No. in Queue</div>
+                        <div class="queue-num">{{restaurant.customers.length}}</div>
+                        <div class="wait">Waiting Time: </div>
+                        <div class="wait-num">{{((restaurant.eta - restaurants.timeNow)/60000).toFixed(2)}}</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </a>
+      </div>
+    </div>
 </div>
-  </div>
