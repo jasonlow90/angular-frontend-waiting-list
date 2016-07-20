@@ -30,6 +30,7 @@ p {
     text-align: center;
 }
 header {
+    margin: 0 auto;
     padding: 20px 0;
     text-align: center;
     height: 150px;
@@ -55,7 +56,11 @@ footer {
 }
 
 /*/////////////////////////////////////*/
-
+.restaurant-logo {
+  width: 72px;
+  height: 72px;
+  margin-left: 55px;
+}
 .home-container {
     padding-top: 40px;
     text-align: center;
@@ -182,6 +187,7 @@ thead {
 .name {
     text-align: left;
     padding-left: 15px;
+    width: 300px;
     font-size: 22px;
     font-weight: 500;
 }
@@ -191,6 +197,7 @@ thead {
     font-weight: 700;
 }
 .heads {
+    width: 10px;
     padding-top: 12px;
     color: #878787;
     background-image: url('../images/head-back.png');
@@ -255,8 +262,8 @@ BUTTONS
 }
 .btn-register {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 50px;
+    right: 100px;
     width: 80px;
     height: 35px;
     border: 1px solid #ccc;
