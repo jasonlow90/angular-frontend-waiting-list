@@ -19,16 +19,17 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
 
     // Console.log our response from the API
     if(token) {
-      console.log(res.restaurantNameSuburb);
-      // $state.go(self.isLoggedIn() ? "admin", {restaurantNameSuburb: res.restaurantNameSuburb} : "home");
-      if (self.isLoggedIn()) {
+      // $state.go(self.isLoggedIn() ? ('admin', {restaurantNameSuburb: res.restaurantNameSuburb}) : "home");
+    //   if (self.isLoggedIn()) {
         $state.go("admin",{restaurantNameSuburb: res.restaurantNameSuburb});
-      } else {
-        $state.go("home");
-
-      }
-    }
+    //   } else {
+    //     $state.go("home");
+    //
+    //   }
+  } else {
+    $state.go("home");
     self.message = res.message;
+  }
   }
 
   this.getRestaurants = function(){
