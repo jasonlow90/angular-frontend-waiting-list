@@ -13,21 +13,6 @@ angular
     console.log(API);
     // var Socket = io("http://localhost:3000");
 
-    // // To receive message
-    // Socket.on('got-message', function(data){
-    //   console.log(data.content);
-    //   self.messages.push(data.content);
-    //   console.log(self.messages);
-    // });
-    //
-    // // To send message
-    // this.sendMessage = function (){
-    //   console.log('sending message');
-    //   Socket.emit('message', {content: self.output});
-    //   console.log(self.output);
-    //   console.log(self.messages);
-    //   self.output = "";
-    // };
     // Socket listener;
 
     // When socket receives an event name called 'init', it will grab the data and assign the value into the local variables
@@ -38,7 +23,6 @@ angular
 
     //When socket receives an event name called 'send:message', it will grab the data and push the data into self.messages array
     Socket.on('send:message:fromServer', function(message){
-      console.log(message);
       self.messages.push(message);
       // $rootScope.$apply();
     });
@@ -73,7 +57,7 @@ angular
     });
 
     // Private helper
-
+// Function to change the name of the users in the message board
     var changeName = function(oldName, newName){
       var i;
       for (i = 0; i < self.users.length; i++){
@@ -83,8 +67,8 @@ angular
       }
 
       self.messages.push({
-        user: 'chatroom',
-        text: 'User ' + oldName + ' is now known as ' + newName + '.'
+        user: 'Chatroom',
+        text: '' + oldName + ' is now known as ' + newName + '.'
       });
     };
 
@@ -105,20 +89,20 @@ angular
     };
 
     self.sendMessage = function(){
-      console.log(self.message)
-      Socket.emit('send:message:fromClient', {
-        message: self.message
-      });
+      if(self.message){
+        Socket.emit('send:message:fromClient', {
+          message: self.message
+        });
 
-      // Add message to our model locally
-      self.messages.push({
-        user: self.name,
-        text: self.message
-      });
+        // Add message to our model locally
+        self.messages.push({
+          user: self.name,
+          text: self.message
+        });
 
-      // Clear message box
-      self.message = '';
+        // Clear message box
+        self.message = '';
+      }
     };
-    console.log(Socket);
 
   }
