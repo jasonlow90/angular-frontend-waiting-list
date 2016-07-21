@@ -13,7 +13,7 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
   self.staff = {};
   self.restaurant ={}; // Model for creating a restaurant
   self.eta ;
-
+  self.Math = Math;
   function handleLogin(res) {
     var token = res.token ? res.token : null;
 
@@ -40,15 +40,15 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
         for(var y =0; y < self.all[i].customers.length; y++){
           waitingArray.push(new Date(self.all[i].customers[y].finishedWaiting));
         }
-        self.all[i].eta = Math.max.apply(Math, waitingArray).toFixed(1);
+        self.all[i].eta = parseInt(Math.max.apply(Math, waitingArray).toFixed(1));
         if (self.all[i].eta < 1 && waitingArray.length !== 0) {
           self.all[i].eta = "Due";
         } else if (waitingArray.length === 0) {
           self.all[i].eta = "--";
         }
       }
+      console.log(parseInt(self.all[0].eta));
 
-      console.log(self.all)
     });
   };
   this.authorize = function(){
@@ -75,7 +75,7 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
   var timer = function(){
     self.timeNow = Date.now(); // Refreshes the time Now every second
     // console.log('renewing date.now');
-    $scope.$digest();
+    $scope.$apply();
   };
 
   this.logoClick = function(){

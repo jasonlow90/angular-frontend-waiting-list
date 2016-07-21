@@ -50,7 +50,8 @@
                           <td class="heads">{{customer.heads}}</td>
                           <td class="name">{{customer.customerName}}</td>
                           <td class="name">{{customer.phone}}</td>
-                          <td class="timer">{{ ((customer.finishedWaiting - admin.timeNow)/60000).toFixed(2) }}  </td>
+                          <td class="timer">{{admin.Math.floor(((customer.finishedWaiting - admin.timeNow)/60000)%60)}}:{{admin.Math.floor(((customer.finishedWaiting - admin.timeNow)/1000)%60)}}</td>
+
                           <td class="flex">
                             <button ng-click ="admin.editCustomer(customer)" class="btn-remove">Edit Me</button>
                             <button ng-click="admin.deleteCustomer(customer)" class="btn-remove" style="margin-left: 15px">Delete Me</button>

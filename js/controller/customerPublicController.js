@@ -9,6 +9,7 @@ function CustomerPublicController(CustomerPublic, $state, $scope, $interval, $ro
   // $scope.awesome = true; //note: $scope is not really a scope. its should be something like $context;
   // $scope.title = 'Home Page!';
   var self = this;
+  self.Math = Math;
   self.all = [];
   console.log($route);
   console.log($state);
@@ -27,7 +28,7 @@ function CustomerPublicController(CustomerPublic, $state, $scope, $interval, $ro
   var timer = function(){
     self.timeNow = Date.now(); // Refreshes the time Now every second
     // console.log('renewing date.now');
-    $scope.$digest();
+    $scope.$apply();
   };
 
   this.logoClick = function(){
