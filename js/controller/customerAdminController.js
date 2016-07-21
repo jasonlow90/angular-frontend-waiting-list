@@ -11,7 +11,7 @@ function CustomerAdminController(CustomerAdmin, $interval, TokenService, $window
   this.all = [];
   this.unsorted = [];
   this.customer = {};
-  this.staff = {};
+  this.button = "Add Customer";
 
   this.getCustomers = function(){
 
@@ -27,6 +27,7 @@ function CustomerAdminController(CustomerAdmin, $interval, TokenService, $window
     if(self.customer._id){
       CustomerAdmin.update(self.customer, function(res){
         self.getCustomers();
+        self.button = "Add Customer";
         self.customer = {};
       });
 
@@ -43,6 +44,7 @@ function CustomerAdminController(CustomerAdmin, $interval, TokenService, $window
 
   this.editCustomer = function(customer){
     self.customer = customer;
+    self.button = "Update Customer";
     console.log(self.customer);
   };
 
@@ -64,7 +66,6 @@ function CustomerAdminController(CustomerAdmin, $interval, TokenService, $window
     console.log("hello");
     TokenService.removeToken();
     self.all = [];
-    self.staff ={};
     $state.go('root');
   };
 
