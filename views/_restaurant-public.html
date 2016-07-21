@@ -35,5 +35,43 @@
                 </table>
                 <!-- end customer -->
             </div>
+
+            <div ng-controller="SocketController as socket">
+              <div class="col" >
+                <div class= "message-board" >
+                  <p ng-repeat = "message in socket.messages">{{message.user}}:{{message.text}}</p>
+                </div>
+                </div>
+
+                <div class="col">
+                  <h3>Users</h3>
+                  <div class="overflowable">
+                    <p ng-repeat = "user in socket.users">{{user}}</p>
+                  </div>
+                </div>
+
+                <div class="clr">
+                  <div class="overflowable">
+                    <p>Message: </p>
+                    <form ng-submit="socket.sendMessage()">
+                      <input type="text" class = "messages" ng-model = "socket.message">
+                      <input type="submit">
+
+                    </form>
+                  </div>
+
+                </div>
+
+                <div class="clr">
+                  <h3>Change Your Name</h3>
+                  <p>Your current user name is {{socket.name}}</p>
+                  <form >
+                    <input type="text" ng-model = "socket.newName">
+                    <input type="submit" value="Change Name" ng-click="socket.changeName()">
+                  </form>
+                </div>
+
+            </div>
+
         </div>
     </div>

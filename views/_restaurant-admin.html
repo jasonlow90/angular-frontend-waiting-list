@@ -19,7 +19,7 @@
                     <input id="customer_name" type="text" name="customer_name" ng-model="admin.customer.customerName" placeholder="Name">
                     <input id="customer_mobile" type="text" name="customer_mobile" ng-model="admin.customer.phone" placeholder="Mobile">
                     <input id="customer_eta" type="text" name="customer_eta" ng-model="admin.customer.eta" placeholder="ETA">
-                    <button id="newCustomer" class="btn-submit">Add Customer</button>
+                    <button id="newCustomer" ng-model = "admin.button" class="btn-submit">{{ admin.button }}</button>
                 </form>
             </div>
 
@@ -63,6 +63,8 @@
                 </table>
                 <!-- end customer -->
             </div>
+
+
         </div>
     </div>
 
