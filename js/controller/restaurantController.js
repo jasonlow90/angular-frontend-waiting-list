@@ -13,6 +13,7 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
   self.staff = {};
   self.restaurant ={}; // Model for creating a restaurant
   self.eta ;
+  self.Math = Math;
 
   function handleLogin(res) {
     var token = res.token ? res.token : null;
@@ -75,7 +76,7 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
   var timer = function(){
     self.timeNow = Date.now(); // Refreshes the time Now every second
     // console.log('renewing date.now');
-    $scope.$digest();
+    $scope.$apply();
   };
 
   this.logoClick = function(){

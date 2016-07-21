@@ -12,6 +12,7 @@ function CustomerAdminController(CustomerAdmin, $interval, TokenService, $window
   this.unsorted = [];
   this.customer = {};
   this.button = "Add Customer";
+  self.Math = Math;
 
   this.getCustomers = function(){
 
@@ -78,7 +79,7 @@ function CustomerAdminController(CustomerAdmin, $interval, TokenService, $window
   var timer = function(){
     self.timeNow = Date.now(); // Refreshes the time Now every second
     // console.log('renewing date.now');
-    $scope.$digest();
+    $scope.$apply();
   };
 
   this.logoClick = function(){

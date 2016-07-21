@@ -10,15 +10,12 @@ function CustomerPublicController(CustomerPublic, $state, $scope, $interval, $ro
   // $scope.title = 'Home Page!';
   var self = this;
   self.all = [];
-  console.log($route);
-  console.log($state);
-  console.log($stateParams);
+  self.Math = Math;
 
   this.getCustomers = function(){
     CustomerPublic.query({restaurantNameSuburb: $stateParams.restaurantNameSuburb}, function(res){
       self.all = _.sortBy(res, 'finishedWaiting');
     });
-    console.log(self.all.length);
     console.log("Queried success");
   };
 
@@ -27,7 +24,7 @@ function CustomerPublicController(CustomerPublic, $state, $scope, $interval, $ro
   var timer = function(){
     self.timeNow = Date.now(); // Refreshes the time Now every second
     // console.log('renewing date.now');
-    $scope.$digest();
+    $scope.$apply();
   };
 
   this.logoClick = function(){
