@@ -35,43 +35,54 @@
                 </table>
                 <!-- end customer -->
             </div>
+          </div>
+  <div class="socket-container">
 
-            <div ng-controller="SocketController as socket">
-              <div class="col" >
-                <div class= "message-board" >
-                  <p ng-repeat = "message in socket.messages">{{message.user}}:{{message.text}}</p>
-                </div>
+            <div ng-controller="SocketController as socket" class="socket-row">
+              <div class="col-message-board socket-column" style="width: 66%">
+                  <h3>Message Board</h3>
+                  <div class="overflowable">
+                    <p ng-repeat = "message in socket.messages"><strong>{{message.user}}</strong> : {{message.text}}</p>
+
+                  </div>
                 </div>
 
-                <div class="col">
+                <div class="col-users socket-column" style="width: 33%">
                   <h3>Users</h3>
                   <div class="overflowable">
                     <p ng-repeat = "user in socket.users">{{user}}</p>
                   </div>
-                </div>
+                  </div>
+            <!-- <div class="socket-row"> -->
 
-                <div class="clr">
-                  <div class="overflowable">
+                <div class="socket-column" style="padding-left: 120px; margin-bottom: 60px;">
+                  <!-- <div class="overflowable"> -->
+                  <!-- <div class="col-message"> -->
+
                     <p>Message: </p>
-                    <form ng-submit="socket.sendMessage()">
-                      <input type="text" class = "messages" ng-model = "socket.message">
+                    <form ng-submit="socket.sendMessage()" class="socket-form">
+                      <input type="text" class = "messages" place-holder= "Please input a message."ng-model = "socket.message">
                       <input type="submit">
 
                     </form>
-                  </div>
-
+                  <!-- </div> -->
                 </div>
+                <!-- </div> -->
 
-                <div class="clr">
-                  <h3>Change Your Name</h3>
-                  <p>Your current user name is {{socket.name}}</p>
-                  <form >
-                    <input type="text" ng-model = "socket.newName">
-                    <input type="submit" value="Change Name" ng-click="socket.changeName()">
+                <!-- </div> -->
+
+                <div class="socket-column" style="float: right; margin-bottom: 60px;">
+                  <!-- <div class="col-change-name"> -->
+
+                  <p>Your current user name is <strong>{{socket.name}}</strong></p>
+                  <form class="socket-form" ng-submit="socket.changeName()">
+                    <input type="text" ng-model = "socket.newName" >
+                    <input type="submit" value="Change Name" place-holder="New name" >
                   </form>
-                </div>
+                <!-- </div> -->
+              </div>
+              <!-- </div> -->
 
             </div>
 
-        </div>
     </div>
