@@ -466,7 +466,7 @@ input:-webkit-autofill {
     margin: 17px 5px;
 }
 
-/* app css stylesheet */
+/* socket css stylesheet */
 
 .overflowable {
   height: 240px;
@@ -476,10 +476,11 @@ input:-webkit-autofill {
 
 .overflowable p {
   margin: 0;
+  
 }
 
 /* poor man's grid system */
-.col {
+.socket-column {
   float: left;
   width: 350px;
 }
@@ -487,3 +488,25 @@ input:-webkit-autofill {
 .clr {
   clear: both;
 }
+
+.socket-form input{
+  font-size: 16px;
+}
+
+/*.socket-container {
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+.socket-row {
+  display: table-header-group;
+  font-size: 16px;
+}
+
+.col-message-board {
+  width: 60%;
+}
+
+.col-users{
+  width: 30%;
+}*/
