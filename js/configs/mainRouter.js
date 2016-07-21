@@ -25,7 +25,7 @@ function MainRouter($stateProvider, $urlRouterProvider, API){
     })
     .state('home', {
       url:"",
-      templateUrl: "./_home.html",
+      templateUrl: "./home.html",
       controller: "RestaurantController"
     });
 
