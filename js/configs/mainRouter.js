@@ -12,20 +12,20 @@ function MainRouter($stateProvider, $urlRouterProvider, API){
     })
 		.state('admin', {
 			url: ":restaurantNameSuburb/admin",
-			templateUrl: "./_restaurant-admin.html"
+			templateUrl: "./views/restaurant-admin.html"
 		})
 		.state('public', {
 			url: ":restaurantNameSuburb/public",
-			templateUrl: "./_restaurant-public.html"
+			templateUrl: "./views/restaurant-public.html"
 		})
     .state('registration', {
       url: "registration",
-      templateUrl: "./_registration.html",
+      templateUrl: "./views/registration.html",
       controller: "RestaurantController"
     })
     .state('home', {
       url:"",
-      templateUrl: "./home.html",
+      templateUrl: "./views/home.html",
       controller: "RestaurantController"
     });
 
