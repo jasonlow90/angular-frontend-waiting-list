@@ -4,10 +4,12 @@ Socket.$inject = ["API", "$rootScope"];
 
 function Socket (API, $rootScope){
   var self = this;
-  var socket = io("http://localhost:3000");
+  var socket = io(API);
     self.on = function(eventName, callback) {
       socket.on(eventName, function(){
         var args = arguments;
+        // This forces angular to run a digest cycle to do a dom checking
+        // Angular will update the html's dom automatically if there is any changes
          $rootScope.$apply(function(){
            callback.apply(socket, args);
          });

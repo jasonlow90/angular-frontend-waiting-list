@@ -25,6 +25,7 @@ function Restaurant($resource, API, $route) {
             restaurant.website = item.website;
             restaurant.restaurantName = item.restaurantName;
             restaurant.cuisine = item.cuisine;
+            restaurant.phone = item.phone;
             restaurant.restaurantEmail = item.restaurantEmail;
             restaurant.customers = item.customers;
 
