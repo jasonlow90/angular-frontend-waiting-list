@@ -75,10 +75,20 @@ function CustomerAdminController(CustomerAdmin, $interval, TokenService, $window
     return !!TokenService.getToken();
   };
 
+  this.customerTimer = function(){
+    for (var i = 0; i < self.all.length; i++) {
+      var minutes = Math.floor((self.all[i].finishedWaiting - self.timeNow)/60000)%60;
+      var seconds = Math.floor((self.all[i].finishedWaiting - self.timeNow)/1000)%60;
+      self.all[i].waitMinutes = (minutes > -1 || minutes === 0) ? minutes : "Due";
+      self.all[i].waitSeconds = seconds;
+    }
+  };
+
   this.timeNow = Date.now();
   var timer = function(){
     self.timeNow = Date.now(); // Refreshes the time Now every second
     // console.log('renewing date.now');
+    self.customerTimer();
     $scope.$apply();
   };
 

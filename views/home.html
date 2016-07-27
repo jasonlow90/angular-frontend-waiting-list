@@ -30,7 +30,9 @@
                         <div class="queue">No. in Queue</div>
                         <div class="queue-num">{{restaurant.customers.length}}</div>
                         <div class="wait">Waiting Time: </div>
-                        <div class="wait-num">{{ restaurant.waitMinutes}}:{{restaurant.waitSeconds}}</div>
+                        <div class="wait-num" ng-hide="restaurant.waitMinutes === 'Due'">{{ restaurant.waitMinutes}}:{{restaurant.waitSeconds}}</div>
+                        <div class="wait-num" ng-show="restaurant.waitMinutes === 'Due'">{{ restaurant.waitMinutes}}</div>
+
                     </div>
 
                 </div>

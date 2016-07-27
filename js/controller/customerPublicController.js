@@ -23,7 +23,7 @@ function CustomerPublicController(CustomerPublic, $state, $scope, $interval, $ro
     for (var i = 0; i < self.all.length; i++) {
       var minutes = Math.floor((self.all[i].finishedWaiting - self.timeNow)/60000)%60;
       var seconds = Math.floor((self.all[i].finishedWaiting - self.timeNow)/1000)%60;
-      self.all[i].waitMinutes = (minutes > 0) ? minutes : "Due";
+      self.all[i].waitMinutes = (minutes > -1 || minutes === 0) ? minutes : "Due";
       self.all[i].waitSeconds = (minutes > 0) ? seconds : "";
 
     }
@@ -34,7 +34,6 @@ function CustomerPublicController(CustomerPublic, $state, $scope, $interval, $ro
 
   var timer = function(){
     self.timeNow = Date.now(); // Refreshes the time Now every second
-    console.log(self.all);
     self.customerTimer();
     $scope.$apply();
   };
