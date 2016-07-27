@@ -23,7 +23,7 @@
                       <tr ng-repeat="customer in customers.all" class= "customer-row">
                         <td class="heads public" style="width: 10px">{{customer.heads}}</td>
                         <td class="name" style= "width: 300px">{{customer.customerName}}</td>
-                        <td class="timer" style="width: 10px">{{customers.Math.floor(((customer.finishedWaiting - customers.timeNow)/60000)%60)}}:{{customers.Math.floor(((customer.finishedWaiting - customers.timeNow)/1000)%60)}}</td>
+                        <td class="timer" style="width: 10px">{{customer.waitMinutes}}:{{customer.waitSeconds}}</td>
 
 
 
