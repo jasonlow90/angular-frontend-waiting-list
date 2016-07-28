@@ -24,7 +24,7 @@
                         <td class="heads public" style="width: 10px">{{customer.heads}}</td>
                         <td class="name" style= "width: 300px">{{customer.customerName}}</td>
                         <td class="timer" style="width: 10px" ng-hide="customer.waitMinutes === 'Due'">{{customer.waitMinutes}}:{{customer.waitSeconds}}</td>
-                        <td class="timer" style="width: 10px" ng-show="customer.waitMinutes === 'Due'">{{customer.waitMinutes}}</td>
+                        <td class="timer" style="width: 10px" id="due" ng-show="customer.waitMinutes === 'Due'">{{customer.waitMinutes}}</td>
 
 
 

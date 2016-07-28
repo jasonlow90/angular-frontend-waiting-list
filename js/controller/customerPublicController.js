@@ -24,7 +24,7 @@ function CustomerPublicController(CustomerPublic, $state, $scope, $interval, $ro
       var minutes = Math.floor((self.all[i].finishedWaiting - self.timeNow)/60000)%60;
       var seconds = Math.floor((self.all[i].finishedWaiting - self.timeNow)/1000)%60;
       self.all[i].waitMinutes = (minutes > -1 || minutes === 0) ? minutes : "Due";
-      self.all[i].waitSeconds = (minutes > 0) ? seconds : "";
+      self.all[i].waitSeconds = seconds;
 
     }
   };
