@@ -5,4 +5,4 @@ angular
   $httpProvider.interceptors.push('AuthInterceptor');
 });
 
-// 'https://queuer-jnp.herokuapp.com/' || 'http://localhost:3000'
+// 'https://queuer-jnp.herokuapp.com' || 'http://localhost:3000'
