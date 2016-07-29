@@ -468,7 +468,10 @@ input:-webkit-autofill {
 /* socket css stylesheet */
 
 .overflowable {
-  height: 240px;
+  position: relative;
+  /*height: auto;*/
+  height: 300px;
+  overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid #000;
 }
@@ -482,6 +485,11 @@ input:-webkit-autofill {
 .socket-column {
   float: left;
   width: 350px;
+}
+
+.socket-column h3{
+  font-size: 20px;
+  color: #999;
 }
 
 .clr {
@@ -500,4 +508,11 @@ input:-webkit-autofill {
 
 #due {
   animation: flash 1s infinite;
+}
+.public-container {
+  height: auto;
+  position: relative;
+}
+.public-message {
+  height: 100%;
 }
