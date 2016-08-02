@@ -468,12 +468,13 @@ input:-webkit-autofill {
 /* socket css stylesheet */
 
 .overflowable {
-  position: relative;
+  /*position: relative;*/
   /*height: auto;*/
   height: 300px;
   overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid #000;
+  /*bottom: 0;*/
 }
 
 .overflowable p {
@@ -512,7 +513,10 @@ input:-webkit-autofill {
 .public-container {
   height: auto;
   position: relative;
+  /*bottom: 0;*/
 }
 .public-message {
   height: 100%;
+  position: absolute;
+  bottom: 0;
 }

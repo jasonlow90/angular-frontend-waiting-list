@@ -60,7 +60,7 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
       var seconds = Math.floor((self.all[i].longestWait - self.timeNow)/1000)%60;
       self.all[i].waitMinutes = minutes;
       self.all[i].waitSeconds = seconds;
-      self.all[i].waitMinutes = (minutes > -1 || minutes === 0) ? minutes : "Nil";
+      self.all[i].waitMinutes = (minutes > -1 || minutes === 0) ? minutes : "--";
       self.all[i].waitSeconds = seconds;
 
     }
