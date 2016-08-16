@@ -11,23 +11,32 @@ function CustomerPublicController(CustomerPublic, $state, $scope, $interval, $ro
   var self = this;
   self.Math = Math;
   self.all = [];
-  console.log($route);
-  console.log($state);
-  console.log($stateParams);
+  self.Math = Math;
 
   this.getCustomers = function(){
     CustomerPublic.query({restaurantNameSuburb: $stateParams.restaurantNameSuburb}, function(res){
       self.all = _.sortBy(res, 'finishedWaiting');
     });
-    console.log(self.all.length);
     console.log("Queried success");
+  };
+
+  this.customerTimer = function(){
+    for (var i = 0; i < self.all.length; i++) {
+      var minutes = Math.floor((self.all[i].finishedWaiting - self.timeNow)/60000)%60;
+      var seconds = Math.floor((self.all[i].finishedWaiting - self.timeNow)/1000)%60;
+      self.all[i].waitMinutes = (minutes > -1 || minutes === 0) ? minutes : "Due";
+      self.all[i].waitSeconds = seconds.toFixed(0.2);
+
+    }
   };
 
   this.getCustomers(); // Make a .get request to the api to get all the customers into this.all array
   this.timeNow = Date.now();
+
   var timer = function(){
     self.timeNow = Date.now(); // Refreshes the time Now every second
-    // console.log('renewing date.now');
+
+    self.customerTimer();
     $scope.$apply();
   };
 

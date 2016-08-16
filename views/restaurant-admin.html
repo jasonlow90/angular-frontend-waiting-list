@@ -34,14 +34,14 @@
                             <td>NAME</td>
                             <td>MOBILE</td>
                             <td><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i></td>
-                            <td>
+                            <!-- <td>
                                 <div class="change-eta">
                                     <form class="flex delayForm" action="">
                                         <input type="text" name="restarant_name" placeholder="Global">
                                         <button class="btn-doit">Add</button>
                                     </form>
                                 </div>
-                            </td>
+                            </td> -->
                         </tr>
                     </thead>
                     <tbody id="customerListAdmin" ng-repeat="customer in admin.all">
@@ -50,11 +50,11 @@
                           <td class="heads">{{customer.heads}}</td>
                           <td class="name">{{customer.customerName}}</td>
                           <td class="name">{{customer.phone}}</td>
-                          <td class="timer">{{admin.Math.floor(((customer.finishedWaiting - admin.timeNow)/60000)%60)}}:{{admin.Math.floor(((customer.finishedWaiting - admin.timeNow)/1000)%60)}}</td>
-
+                          <td class="timer" ng-hide="(customer.waitMinutes === 'Due' && customer.waitSeconds < 1)">{{customer.waitMinutes}}:{{customer.waitSeconds}}</td>
+                          <td class="timer" id="due" ng-show="customer.waitMinutes === 'Due'">{{customer.waitMinutes}}</td>
                           <td class="flex">
-                            <button ng-click ="admin.editCustomer(customer)" class="btn-remove">Edit Me</button>
-                            <button ng-click="admin.deleteCustomer(customer)" class="btn-remove" style="margin-left: 15px">Delete Me</button>
+                            <button ng-click ="admin.editCustomer(customer)" class="btn-remove">Edit</button>
+                            <button ng-click="admin.deleteCustomer(customer)" class="btn-remove" style="margin-left: 15px">Delete</button>
                           </td>
 
                         </tr>

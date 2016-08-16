@@ -7,25 +7,25 @@ function MainRouter($stateProvider, $urlRouterProvider, API){
 	$stateProvider
 		.state('root', {
 			url: "",
-      template: '<section ui-view></section ui-view>',
+      template: '<div ui-view></div ui-view>',
       controller: "RestaurantController"
     })
 		.state('admin', {
 			url: ":restaurantNameSuburb/admin",
-			templateUrl: "./views/_restaurant-admin.html"
+			templateUrl: "./views/restaurant-admin.html"
 		})
 		.state('public', {
 			url: ":restaurantNameSuburb/public",
-			templateUrl: "./views/_restaurant-public.html"
+			templateUrl: "./views/restaurant-public.html"
 		})
     .state('registration', {
       url: "registration",
-      templateUrl: "./views/_registration.html",
+      templateUrl: "./views/registration.html",
       controller: "RestaurantController"
     })
     .state('home', {
       url:"",
-      templateUrl: "./views/_home.html",
+      templateUrl: "./views/home.html",
       controller: "RestaurantController"
     });
 

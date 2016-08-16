@@ -1,8 +1,8 @@
 angular
   .module('Queuer', ['ngResource', 'ui.router', 'ngRoute'])
-  .constant('API', 'http://localhost:3000')
+  .constant('API', 'https://queuer-jnp.herokuapp.com')
   .config(function($httpProvider){
   $httpProvider.interceptors.push('AuthInterceptor');
 });
 
-// 'https://waiting-list-jnp.herokuapp.com' || 'http://localhost:3000'
+// 'https://queuer-jnp.herokuapp.com' || 'http://localhost:3000'
