@@ -80,7 +80,7 @@ function CustomerAdminController(CustomerAdmin, $interval, TokenService, $window
       var minutes = Math.floor((self.all[i].finishedWaiting - self.timeNow)/60000)%60;
       var seconds = Math.floor((self.all[i].finishedWaiting - self.timeNow)/1000)%60;
       self.all[i].waitMinutes = (minutes > -1 || minutes === 0) ? minutes : "Due";
-      self.all[i].waitSeconds = seconds;
+      self.all[i].waitSeconds = seconds.toFixed(2);
     }
   };
 

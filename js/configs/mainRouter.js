@@ -7,7 +7,7 @@ function MainRouter($stateProvider, $urlRouterProvider, API){
 	$stateProvider
 		.state('root', {
 			url: "",
-      template: '<section ui-view></section ui-view>',
+      template: '<div ui-view></div ui-view>',
       controller: "RestaurantController"
     })
 		.state('admin', {

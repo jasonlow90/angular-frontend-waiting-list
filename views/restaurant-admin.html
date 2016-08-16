@@ -50,7 +50,7 @@
                           <td class="heads">{{customer.heads}}</td>
                           <td class="name">{{customer.customerName}}</td>
                           <td class="name">{{customer.phone}}</td>
-                          <td class="timer" ng-hide="(customer.waitMinutes === 'Due' && customer.waitSeconds < 1))">{{customer.waitMinutes}}:{{customer.waitSeconds}}</td>
+                          <td class="timer" ng-hide="(customer.waitMinutes === 'Due' && customer.waitSeconds < 1)">{{customer.waitMinutes}}:{{customer.waitSeconds}}</td>
                           <td class="timer" id="due" ng-show="customer.waitMinutes === 'Due'">{{customer.waitMinutes}}</td>
                           <td class="flex">
                             <button ng-click ="admin.editCustomer(customer)" class="btn-remove">Edit</button>
