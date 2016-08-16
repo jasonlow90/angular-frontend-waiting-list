@@ -14,10 +14,6 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
   self.restaurant ={}; // Model for creating a restaurant
   self.eta ;
   self.Math = Math;
-<<<<<<< HEAD
-=======
-
->>>>>>> gh-pages
   function handleLogin(res) {
     var token = res.token ? res.token : null;
 
