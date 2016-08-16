@@ -44,29 +44,21 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
         for(var y =0; y < self.all[i].customers.length; y++){
           waitingArray.push(new Date(self.all[i].customers[y].finishedWaiting));
         }
-<<<<<<< HEAD
         self.all[i].eta = parseInt(Math.max.apply(Math, waitingArray).toFixed(1));
         if (self.all[i].eta < 1 && waitingArray.length !== 0) {
           self.all[i].eta = "Due";
         } else if (waitingArray.length === 0) {
           self.all[i].eta = "--";
         }
-=======
         self.all[i].longestWait = Math.floor(Math.max.apply(Math, waitingArray));
         // if (self.all[i].eta < 1 && waitingArray.length !== 0) {
         //   self.all[i]. = "Due";
         // } else if (waitingArray.length === 0) {
         //   self.all[i].eta = "--";
         // }
->>>>>>> gh-pages
-      }
-      console.log(parseInt(self.all[0].eta));
 
-<<<<<<< HEAD
-=======
       // console.log(self.all);
 
->>>>>>> gh-pages
     });
   };
 
