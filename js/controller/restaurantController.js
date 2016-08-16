@@ -55,8 +55,9 @@ function RestaurantController(Restaurant, $scope, $interval, $window, $state, To
 
       // console.log(self.all);
 
-    });
-  };
+  }
+});
+};
 
   this.restaurantsTimer = function(){
     for (var i = 0; i < self.all.length; i++) {
